@@ -10,5 +10,5 @@ Feature: Adding new address
     Then It is checked whether the address has been added
 
     Examples:
-    | alias  | address |   city    | zippostalcode |     country    |  phone  |   email   | password |
-    | Johnny |  2137   | Krakszawa |      420     | United Kingdom | 0700880 | Janusz@Dzban | 12345 |
+      | alias  | address |   city    | zippostalcode |     country    |  phone  |   email   | password |
+      | Johnny |  2137   | Krakszawa |     420    | United Kingdom| 0700880 | Janusz@Dzban | 12345 |

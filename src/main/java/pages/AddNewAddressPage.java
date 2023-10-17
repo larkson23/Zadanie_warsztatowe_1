@@ -60,7 +60,7 @@ public class AddNewAddressPage extends BasePage {
             getCityInputField().sendKeys(city);
             getZippostalcodeInputField().sendKeys(zippostalcode);
             Select select = new Select(countryListField);
-            select.selectByValue(country);
+            select.selectByVisibleText(country);
             getPhoneInputField().sendKeys(phone);
 
         }
