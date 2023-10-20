@@ -33,10 +33,10 @@ public class CreateNewAddress {
     }
 
     @And("User log in with {} {}")
-    public void userLogIn(String arg6, String arg7) {
+    public void userLogIn(String arg5, String arg6) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.writeEmail(arg6);
-        loginPage.writePassword(arg7);
+        loginPage.writeEmail(arg5);
+        loginPage.writePassword(arg6);
         loginPage.clickSignInButton();
     }
 
@@ -52,15 +52,21 @@ public class CreateNewAddress {
         addressesPage.clickCreateNewAddressButton();
     }
 
-    @And("Form is fulfilled with data {} {} {} {} {} {}")
-    public void formIsFulfilledWithDataAliasAddressCityZipPostalcodeCountryPhone(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) {
+    @And("Form is fulfilled with data {} {} {} {} {}")
+    public void formIsFulfilledWithDataAliasAddressCityZipPostalcodeCountryPhone(String arg0, String arg1, String arg2, String arg3, String arg4) {
         AddNewAddressPage addNewAddressPage = new AddNewAddressPage(driver);
-        addNewAddressPage.fulfillform(arg0, arg1, arg2, arg3, arg4, arg5);
+        addNewAddressPage.fulfillform(arg0, arg1, arg2, arg3, arg4);
+        addNewAddressPage.getSaveButton().click();
 
     }
 
-    @Then("It is checked whether the address has been added")
-    public void itIsCheckedWhetherTheAddressHasBeenAdded() {
+    @Then("It is checked whether the address has been added {} {} {} {} {}")
+    public void itIsCheckedWhetherTheAddressHasBeenAdded(String arg0, String arg1, String arg2, String arg3, String arg4) {
+        AddressesPage addressesPage = new AddressesPage(driver);
+        addressesPage.getNewAddress().isDisplayed();
+        addressesPage.getNewCity().isDisplayed();
+        addressesPage.getZippostalcode().isDisplayed();
+        addressesPage.getPhone().isDisplayed();
     }
 
     @After

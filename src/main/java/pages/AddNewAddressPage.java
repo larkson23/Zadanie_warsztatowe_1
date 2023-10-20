@@ -30,6 +30,9 @@ public class AddNewAddressPage extends BasePage {
         @FindBy(id = "field-phone")
         private WebElement phoneInputField;
 
+        @FindBy(css = "#content > div > div > form > footer > button")
+        private WebElement saveButton;
+
         public WebElement getAliasInputField () {
             return getVisibleElement(aliasInputField);
         }
@@ -54,14 +57,15 @@ public class AddNewAddressPage extends BasePage {
             return getVisibleElement(phoneInputField);
         }
 
-        public void fulfillform (String alias, String address, String city, String zippostalcode, String country, String phone){
+        public WebElement getSaveButton () { return getVisibleElement(saveButton);}
+
+        public void fulfillform (String alias, String address, String city, String zippostalcode, String phone){
             getAliasInputField().sendKeys(alias);
             getAddressInputField().sendKeys(address);
             getCityInputField().sendKeys(city);
             getZippostalcodeInputField().sendKeys(zippostalcode);
-            Select select = new Select(countryListField);
-            select.selectByVisibleText(country);
             getPhoneInputField().sendKeys(phone);
 
         }
+
     }
