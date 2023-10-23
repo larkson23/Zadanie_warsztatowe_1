@@ -3,11 +3,18 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.asynchttpclient.util.Assertions;
 import org.junit.After;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ISelect;
+import org.testng.asserts.Assertion;
 import pages.*;
+import static org.junit.Assert.assertEquals;
+
+
+import static org.testng.AssertJUnit.assertEquals;
 
 public class CreateNewAddress {
 
@@ -58,15 +65,21 @@ public class CreateNewAddress {
         addNewAddressPage.fulfillform(arg0, arg1, arg2, arg3, arg4);
         addNewAddressPage.getSaveButton().click();
 
+
     }
 
     @Then("It is checked whether the address has been added {} {} {} {} {}")
     public void itIsCheckedWhetherTheAddressHasBeenAdded(String arg0, String arg1, String arg2, String arg3, String arg4) {
         AddressesPage addressesPage = new AddressesPage(driver);
-        addressesPage.getNewAddress().isDisplayed();
-        addressesPage.getNewCity().isDisplayed();
-        addressesPage.getZippostalcode().isDisplayed();
-        addressesPage.getPhone().isDisplayed();
+        String newAddress = addressesPage.verifyNewAddress();
+        String newCity = addressesPage.verifyNewCity();
+        String newZippostalcode = addressesPage.verifyNewZippostalcode();
+        String newPhone = addressesPage.verifyNewPhone();
+        assertEquals(arg1, newAddress);
+        assertEquals(arg2, newCity);
+        assertEquals(arg3, newZippostalcode);
+        assertEquals(arg4, newPhone);
+
     }
 
     @After

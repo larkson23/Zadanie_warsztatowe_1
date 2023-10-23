@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+
 public class AddNewAddressPage extends BasePage {
 
     public AddNewAddressPage(WebDriver driver) {
@@ -66,6 +67,11 @@ public class AddNewAddressPage extends BasePage {
             getZippostalcodeInputField().sendKeys(zippostalcode);
             getPhoneInputField().sendKeys(phone);
 
+
+
+
         }
+
+
 
     }

@@ -1,5 +1,7 @@
 package pages;
 
+import dev.failsafe.internal.util.Assert;
+import org.asynchttpclient.util.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,39 +23,46 @@ public class AddressesPage extends BasePage {
         getCreateNewAddressButton().click();
     }
 
-@FindBy (partialLinkText = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[2]")
+    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[2]")
     private WebElement newAddress;
 
-    @FindBy(partialLinkText = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[3]")
+    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[3]")
     private WebElement newCity;
 
-    @FindBy(partialLinkText = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[4]")
+    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[4]")
     private WebElement newZippostalcode;
 
-    @FindBy(partialLinkText = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[6]")
+    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[6]")
     private WebElement newPhone;
 
-    public WebElement getNewAddress () {
+    public WebElement getNewAddress() {
         return getVisibleElement(newAddress);
     }
 
-    public WebElement getNewCity () {
+    public WebElement getNewCity() {
         return getVisibleElement(newCity);
     }
 
-    public WebElement getZippostalcode () {
+    public WebElement getNewZippostalcode() {
         return getVisibleElement(newZippostalcode);
     }
 
-    public WebElement getPhone () {
+    public WebElement getNewPhone() {
         return getVisibleElement(newPhone);
     }
 
-    public void isDisplayed (String address, String city, String zippostalcode, String phone) {
-        getNewAddress();
-        getNewCity();
-        getZippostalcode();
-        getPhone();
+    public String verifyNewAddress() {
+        return getNewAddress().getText();
     }
+    public String verifyNewCity() {
+        return getNewCity().getText();
+    }
+    public String verifyNewZippostalcode() {
+        return getNewZippostalcode().getText();
+    }
+    public String verifyNewPhone() {
+        return getNewPhone().getText();
+    }
+
 
     }
