@@ -23,46 +23,34 @@ public class AddressesPage extends BasePage {
         getCreateNewAddressButton().click();
     }
 
-    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[2]")
-    private WebElement newAddress;
+    @FindBy(css = "#address-5976 > div.address-body > address")
+    private WebElement newFullAddress;
 
-    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[3]")
-    private WebElement newCity;
+    @FindBy(css = "#address-5976 > div.address-footer > a:nth-child(1)")
+    private WebElement updateButton;
 
-    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[4]")
-    private WebElement newZippostalcode;
+    public WebElement getUpdateButton() {
+        return getVisibleElement(updateButton);
+    }
 
-    @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[2]/article/div[1]/address/text()[6]")
-    private WebElement newPhone;
 
     public WebElement getNewAddress() {
-        return getVisibleElement(newAddress);
-    }
-
-    public WebElement getNewCity() {
-        return getVisibleElement(newCity);
-    }
-
-    public WebElement getNewZippostalcode() {
-        return getVisibleElement(newZippostalcode);
-    }
-
-    public WebElement getNewPhone() {
-        return getVisibleElement(newPhone);
+        return getVisibleElement(newFullAddress);
     }
 
     public String verifyNewAddress() {
         return getNewAddress().getText();
     }
+
     public String verifyNewCity() {
-        return getNewCity().getText();
+        return getNewAddress().getText();
     }
+
     public String verifyNewZippostalcode() {
-        return getNewZippostalcode().getText();
+        return getNewAddress().getText();
     }
+
     public String verifyNewPhone() {
-        return getNewPhone().getText();
+        return getNewAddress().getText();
     }
-
-
-    }
+}

@@ -71,10 +71,14 @@ public class CreateNewAddress {
     @Then("It is checked whether the address has been added {} {} {} {} {}")
     public void itIsCheckedWhetherTheAddressHasBeenAdded(String arg0, String arg1, String arg2, String arg3, String arg4) {
         AddressesPage addressesPage = new AddressesPage(driver);
-        String newAddress = addressesPage.verifyNewAddress();
-        String newCity = addressesPage.verifyNewCity();
-        String newZippostalcode = addressesPage.verifyNewZippostalcode();
-        String newPhone = addressesPage.verifyNewPhone();
+        UpdatePage updatePage = new UpdatePage(driver);
+        addressesPage.getUpdateButton().click();
+        String newAlias = updatePage.verifyNewAlias();
+        String newAddress = updatePage.verifyNewAddress();
+        String newCity = updatePage.verifyNewCity();
+        String newZippostalcode = updatePage.verifyNewZippostalcode();
+        String newPhone = updatePage.verifyNewPhone();
+        assertEquals(arg0, newAlias);
         assertEquals(arg1, newAddress);
         assertEquals(arg2, newCity);
         assertEquals(arg3, newZippostalcode);
